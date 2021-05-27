@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+
+    button {
+      background-color : orange;
+      color:white;
+      width:120px;
+      height:40px;
+      border-radius : 10px;
+      border:1px solid orange;
+    }
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2 style="color:crimson;"> Switching On/Off the Bulb..</h4>
+
+    <img src="bulboff.png" alt="bulboff" id="turnOff" style="width:100px;" />
+    <button type="button" id="btn1" onclick="turnOn()">Switch On </button>
+    <button type="button" id="btn2" onclick="turnOff()">Switch Off </button>
+
+  </body>
+
+  <script type="text/javascript">
+
+    function turnOn() {
+    document.getElementById("turnOff").src = "bulbon.png";
+    }
+
+    function turnOff() {
+    document.getElementById("turnOff").src = "bulboff.png";
+    }
+
+
+  </script>
+</html>

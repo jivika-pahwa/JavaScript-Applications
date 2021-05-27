@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+
+    .fa{
+      font-size:120px;
+      }
+
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+  </head>
+  <body>
+      <h2> I am Thermometer <span id="temperature" class="fa"></span> </h2>
+  </body>
+  <script type="text/javascript">
+
+  const tempLoad = () => {
+
+    let temp = document.getElementById("temperature");
+    temp.innerHTML = "&#xf2cb"; // unicode of Thermometer icon
+    temp.style.color="grey";
+
+    setTimeout(function(){
+      temp.innerHTML = "&#xf2ca"; // unicode of Thermometer icon;
+      temp.style.color = "#f8b627";
+    },1000);
+
+    setTimeout(function(){
+      temp.innerHTML = "&#xf2c9"; // unicode of Thermometer icon;
+    },2000);
+
+    setTimeout(function(){
+      temp.innerHTML = "&#xf2c8"; // unicode of Thermometer icon;
+    },3000);
+
+    setTimeout(function(){
+      temp.innerHTML = "&#xf2c7"; // unicode of Thermometer icon;
+      temp.style.color = "#d63031";
+    },4000);
+  }
+      tempLoad();
+      setInterval(tempLoad,5000); // for infinite looping we use setInterval.
+  </script>
+</html>

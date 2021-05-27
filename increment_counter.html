@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"></link>
+    <title></title>
+  </head>
+  <body>
+            <div class="">
+              <i class="fas fa-users fa-3x"></i>
+                <div class="counter" data-target="4000"></div>
+                <span> Happy Clients </span>
+            </div>
+
+              <div class="">
+                <i class="fas fa-mug-hot fa-3x"></i>
+                  <div class="counter" data-target="1500"></div>
+                  <span> Projects Completed </span>
+              </div>
+
+
+                <div class="">
+                  <i class="fas fa-tasks fa-3x"></i>
+                    <div class="counter" data-target="500"></div>
+                    <span> Ongoing Projects </span>
+                </div>
+  </body>
+  <script type="text/javascript">
+
+    let counter = document.querySelectorAll('.counter');
+    counter.forEach(function(element,index) {
+      counter[index].innerHTML = 0;
+
+      const updateCounter = () => {
+        const target_value = +element.getAttribute('data-target');
+      //  console.log(target_value);
+      //  console.log(typeof(target_value)); // string.
+      //  console.log(typeof(+target_value)); // number cuz of unary operator it is converted from string to number.
+
+        const starting_value = Number(counter[index].innerHTML); // other way to convert string to number.
+        console.log(starting_value);
+      //  console.log(typeof(starting_value));
+         const increment = target_value / 100;
+         if(starting_value < target_value) {
+           counter[index].innerHTML = `${Math.round(starting_value+increment)}`;
+           setTimeout(updateCounter,10);
+         } else {
+          counter[index].innerHTML = target_value;
+         }
+      }
+      updateCounter();
+    });
+
+
+
+
+  </script>
+</html>
+
+<!-- data-* -> data-target is designed to hold custom data for custom code. -->

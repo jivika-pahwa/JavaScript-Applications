@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <style>
+    h1 {
+        color:orange;
+    }
+    button {
+      background-color: lightcoral;
+      color:white;
+      width:120px;
+      height:30px;
+      border-radius: 10px;
+      border: 1px solid white;
+    }
+
+    </style>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1> Write your notes here.......</h1>
+    <button type="button" id="add_button">Add New Note</button>
+<br><br>
+      <!-- <div id="note_div">
+          <button type="button" id="edit">Edit Note</button>
+          <button type="button" id="delete">Delete Note</button>
+          <br><br>
+          <div class=""></div>
+          <textarea name="note_data" rows="5" cols="30" id="text" placeholder="Node will be added here."></textarea>
+      </div> -->
+
+  </body>
+  <script type="text/javascript">
+
+  const add_button = document.getElementById('add_button');
+
+  // note_div.style.display = "none";
+  add_button.addEventListener('click', () => {
+
+    const new_note = document.createElement('div');
+    new_note.classList.add('new_note'); // adding class to div.
+
+    const html_data = `
+    <div class ="new_note">
+        <button type="button" class="edit">Edit Note</button>
+            <button type="button" class="save">Save Note</button>
+        <button type="button" class="delete">Delete Note</button>
+        <br><br>
+        <div class=""></div>
+        <textarea name="note_data" rows="5" cols="30" id="text" placeholder="Node will be added here."></textarea>
+    </div> `; // html inserted into new div (note_div).
+
+      new_note.insertAdjacentHTML('afterbegin',html_data);
+    //  console.log(new_note);
+
+      const edit_button = new_note.querySelector('.edit');
+      const delete_button = new_note.querySelector('.delete');
+      const save_button = new_note.querySelector('.save');
+      const textarea = new_note.querySelector('#text'); // tag - textarea.
+
+      delete_button.addEventListener('click',() => {
+      new_note.remove();
+    });
+
+    edit_button.addEventListener('click',() => { // toggling the edit button.
+
+      if(textarea.disabled == false) {
+        console.log("can't edit now.");
+        textarea.disabled = true;
+      }
+      else{
+        textarea.disabled = false;
+        console.log("now you can write");
+      }
+
+    });
+
+    save_button.addEventListener('click', () => {
+
+        let textarea_all_data = document.querySelectorAll('textarea');
+        let notes = [];
+      //  console.log(textarea_all_data);
+        textarea_all_data.forEach((element) => {
+            return notes.push(element.value);
+        });
+        if(textarea.disabled == false) {
+          console.log("can't edit now.");
+          textarea.disabled = true;
+        }
+        console.log(notes);
+        localStorage.setItem('my-notes',notes);
+    });
+
+    // storing values onto your local system.
+
+
+      document.body.appendChild(new_note);
+  });
+
+
+
+  </script>
+</html>
