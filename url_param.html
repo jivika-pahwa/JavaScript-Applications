@@ -1,0 +1,96 @@
+window.location.href => return the url of current page.
+window.location.hostname => returns the domain name of the web host.
+window.location.search =>  Is a DOMString containing a '?' followed by the parameters of the URL.
+ Also known as "querystring".
+
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+      <p id = "url"> url here : </p>
+      <button type="button" name="click" id="click">click me !</button>
+      <a href="" name="click" target="_blank" id="anchor">click me again!</a>
+      <p id="show_param"> parameters : </p>
+    key :   <input type="text" name="username" value="" id="key" placeholder="enter key"/>
+    value :   <input type="text" name="username" value="" id="value" placeholder="enter value" />
+
+    <button type="button" name="click" id="add_param">click me !</button>
+
+  </body>
+  <script type="text/javascript">
+
+      var get_url = document.getElementById('url');
+      get_url.innerHTML = window.location.href;
+
+      var button = document.getElementById('click');
+      button.addEventListener('click',() => {
+        window.location.href = "https://www.w3schools.com/howto/howto_js_get_url.asp";
+      });
+
+      var anchor = document.getElementById('anchor');
+      anchor.addEventListener('click',() => {
+        const href = anchor.getAttribute('href');
+        // href = window.location.href;
+        window.location.href = "https://www.w3schools.com/howto/howto_js_get_url.asp";
+      });
+
+      const add_param = document.getElementById('add_param');
+      const input_key = document.getElementById('key');
+      const input_value = document.getElementById('value');
+      const show_param = document.getElementById('show_param');
+      const querystring = window.location.search; // first we will take the string
+      const seperate_String = querystring.split('?'); // split to only get the parameter portion.
+      const string = window.location.href;
+
+      console.log(seperate_String);
+    //   const url_param = new URLSearchParams(querystring);
+    // add_param.addEventListener('click', () => {
+    //
+    //   for(const i of url_param.entries()) {
+    //     console.log("key is : "+i[0]);
+    //     console.log("value is : "+i[1]);
+    //   show_param.innerHTML += "<br> key is : "+i[0]+" <br>value is : "+i[1];
+    // }
+    // });
+
+    add_param.addEventListener('click',() => {
+      console.log(string);
+      const url = new URL(string);
+      const search_params = url.searchParams;
+      search_params.forEach((key,value)=> {
+        console.log("key is : "+key);
+            console.log("value is : "+value);
+          show_param.innerHTML += "<br> key is : "+key+" <br>value is : "+value;
+      });
+    })
+
+      add_param.addEventListener('click',() => {
+
+      var url = new URL(string);
+      var search_params = url.searchParams;
+      console.log(search_params);
+      // new value of "id" is set to "101"
+      search_params.set(input_key.value,input_value.value);
+
+      // change the search property of the main url
+      url.search = search_params.toString();
+
+      // show updated url in url bar as well.
+      window.location.search = url.search;
+
+      console.log(" url.search : "+url.search);
+      // the new url string
+      
+      var new_url = url.toString();
+      // output : http://demourl.com/path?id=101&topic=main
+      console.log(new_url);
+
+    });
+
+
+  </script>
+</html>
