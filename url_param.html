@@ -73,7 +73,7 @@ window.location.search =>  Is a DOMString containing a '?' followed by the param
       var url = new URL(string);
       var search_params = url.searchParams;
       console.log(search_params);
-      // new value of "id" is set to "101"
+      // add new value of "id" is set to "101" in the url by set() method.
       search_params.set(input_key.value,input_value.value);
 
       // change the search property of the main url
